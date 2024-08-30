@@ -1,19 +1,12 @@
 name: "Build ISO"
 on:
   workflow_dispatch:
-  workflow_call:
-  schedule:
-    - cron: "30 17 * * *" # build at 17:00 UTC every day
-                          # (20 minutes after last ublue images start building)
-  push:
-    paths-ignore: # don't rebuild if only documentation has changed
-      - "**.md"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-iso
   cancel-in-progress: true
 jobs:
-  tests:
+    ISO:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -22,7 +15,7 @@ jobs:
       uses: DeterminateSystems/nix-installer-action@main
       #with:
       #github_access_token: ${{ secrets.GITHUB_TOKEN }}
-    - run: nix build .#nixosConfigurations.iso.config.system.build.isoImage
+    - run: nix build .#iso
     - name: Upload ISO as artifact
       id: upload
       uses: actions/upload-artifact@v4
