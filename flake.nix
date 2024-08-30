@@ -2,26 +2,26 @@
 description = "We ball, we are production.";
 
 
-nixConfig = {
-
-    # override the default substituters
-    substituters = [
-      # Default NixOS's cache server
-      "https://cache.nixos.org"
-
-      # nix community's cache server
-      "https://nix-community.cachix.org"
-
-#       "https://nyx.chaotic.cx/"
-    ];
-    trusted-public-keys = [
-      # nix community's cache server public key
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-#       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-    ];
-    commit-lockfile-summary = "flake.lock: update inputs";
-  };
+# nixConfig = {
+#
+#     # override the default substituters
+#     substituters = [
+#       # Default NixOS's cache server
+#       "https://cache.nixos.org"
+#
+#       # nix community's cache server
+#       "https://nix-community.cachix.org"
+#
+# #       "https://nyx.chaotic.cx/"
+#     ];
+#     trusted-public-keys = [
+#       # nix community's cache server public key
+#       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+#       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+# #       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+#     ];
+#     commit-lockfile-summary = "flake.lock: update inputs";
+#   };
 
 inputs = {
 
