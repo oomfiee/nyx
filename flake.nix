@@ -86,7 +86,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
     system = "x86_64-linux"; # system arch
     # ---- SYSTEM SETTINGS ---- #
     systemSettings = {
-      timezone = "Asia/Riyadh"; # Select Timezone
       locale = "en_US.UTF-8"; # Select Locale
       kernel = pkgs.linuxPackages_latest; # Kernel
       swap = "zram"; # downloadmoreram.com (Legal disclaimer if this domain exists then thats based)
