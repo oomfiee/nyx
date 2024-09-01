@@ -8,7 +8,8 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Set your time zone.
-time.timeZone = systemSettings.timezone;
+#time.timeZone = systemSettings.timezone;
+services.automatic-timezoned.enable = true;
 i18n.defaultLocale = systemSettings.locale;
   
 system.stateVersion = "24.11"; # Did you read the comment? - no i did not
