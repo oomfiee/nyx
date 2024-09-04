@@ -42,8 +42,8 @@
     BROWSER = "firefox";
   };
     stateVersion = "24.05";                                 # Specificify release version
-    username = userSettings.username;                                    # FIXME: Change 'USERNAME/oomfie' to your username
-    homeDirectory = "/home/"+userSettings.username;                         # FIXME: Change 'USERNAME/oomfie' to your username
+    username = userSettings.username;                       # FIXME: Change 'USERNAME/oomfie' to your username
+    homeDirectory = "/home/"+userSettings.username;         # FIXME: Change 'USERNAME/oomfie' to your username
     packages = with pkgs;                                   # List all of your packages here
     [
       eza
@@ -75,7 +75,7 @@
       #trackma-qt
       #qpwgraph
       keepassxc
-      #nheko
+      nheko
       #kdePackages.neochat
       #thunderbird
       prismlauncher

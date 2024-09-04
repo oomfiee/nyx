@@ -5,9 +5,9 @@ programs.firefox = {
   enable = true;
     arkenfox = {
       enable = true;
-      version = "126.1";
+      version = "128.0";
   };
-  package = pkgs.firefox.override {
+  package = pkgs.firefox-bin .override {
 };
   policies = {
     DisableFirefoxStudies = true;

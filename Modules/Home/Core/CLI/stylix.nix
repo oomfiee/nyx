@@ -12,9 +12,10 @@ in
     stylix.targets = {
       gtk.enable = true;
       kde.enable = true;
-#       wezterm.enable = true;
-#       nushell.enable = true;
+       wezterm.enable = true;
+       nushell.enable = true;
        firefox.enable = true;
+       hyprland.enable = false;
     };
     stylix.cursor.size = 24;
 

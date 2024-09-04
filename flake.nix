@@ -92,6 +92,12 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
       swap = "zram"; # downloadmoreram.com (Legal disclaimer if this domain exists then thats based)
       audio = "pipewire"; # Audio system
       bootloader = "systemd-boot"; # Bootloader
+      nixpkgsConfig = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "olm-3.2.16"
+        ];
+        };
     };
 
     # ----- USER SETTINGS ----- #
@@ -113,12 +119,12 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
 
     pkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
+      config = systemSettings.nixpkgsConfig;
     };
 
     pkgs-stable = import nixpkgs-stable {
       inherit system;
-      config.allowUnfree = true;
+      config = systemSettings.nixpkgsConfig;
     };
 
     in {
@@ -135,7 +141,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         modules = [
         { _module.args = { inherit inputs; }; }
                 {
-        nixpkgs.config.allowUnfree = true;
+        nixpkgs.config = systemSettings.nixpkgsConfig;
         nix.settings.trusted-users = [ userSettings.username ];
         }
         ./Hosts/rose
@@ -179,7 +185,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         modules = [
         { _module.args = { inherit inputs; }; }
                 {
-        nixpkgs.config.allowUnfree = true;
+        nixpkgs.config = systemSettings.nixpkgsConfig;
         nix.settings.trusted-users = [ userSettings.username ];
         }
         ./Hosts/roxy

@@ -25,4 +25,6 @@ services = {
       background=${/home/oomfie/nyx/Modules/Home/Themes/background.png}
      ")
     ];
+
+    programs.xwayland.enable = true;
 }

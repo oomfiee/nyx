@@ -4,7 +4,7 @@
     isNormalUser = true;
     initialPassword = "nixos";
     description = userSettings.username;
-    extraGroups = [ "networkmanager" "wheel" "tss" "scanner" "lp" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "tss" "scanner" "lp" "audio" "docker" ];
     shell = pkgs.${userSettings.sh};
    };
 }
