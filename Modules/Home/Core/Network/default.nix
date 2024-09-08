@@ -1,7 +1,7 @@
 {pkgs, config, lib, ...}:
 {
     imports = [
-    ./DNS
+    #./DNS
     ./Firewall
     ./Wireless/nm.nix
     ];

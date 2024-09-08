@@ -60,6 +60,7 @@
       ark
       hplip
       kdePackages.kdeconnect-kde
+      inputs.lobster.packages.x86_64-linux.lobster
       kdePackages.kate
       android-tools
       wget
@@ -72,7 +73,7 @@
       partition-manager
       #pipx
       signal-desktop
-      #trackma-qt
+      trackma-qt
       #qpwgraph
       keepassxc
       nheko

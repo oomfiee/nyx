@@ -4,10 +4,10 @@
   # Enable networking
 networking = {
   networkmanager = {
-    dns = "none";
+    #dns = "none";
       enable = true;
     };
 };
 
-systemd.services.NetworkManager-wait-online.enable = false;
+#systemd.services.NetworkManager-wait-online.enable = false;
 }

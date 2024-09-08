@@ -21,4 +21,7 @@ system.stateVersion = "24.11"; # Did you read the comment? - no i did not
 
 users.users.root.hashedPassword = "!";
 users.users.root.shell = pkgs.shadow; # Disable root login
+
+services.homed.enable = true;
+services.nscd.enable = true;
 }

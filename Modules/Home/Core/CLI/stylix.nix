@@ -16,6 +16,7 @@ in
        nushell.enable = true;
        firefox.enable = true;
        hyprland.enable = false;
+       fish.enable = true;
     };
     stylix.cursor.size = 24;
 

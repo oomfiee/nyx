@@ -2,11 +2,11 @@
 {
 # // Add your dns IPs here //
 networking = {
-      nameservers = [ "193.110.81.0" "185.253.5.0" ];
+      nameservers = [ "9.9.9.9" "149.112.112.112" ];
 #      enableIPv6 = true;
 };
 
-#services.resolved.extraConfig = ''
-#     DNSOverTLS=yes
-#  '';
+services.resolved.extraConfig = ''
+    DNSOverTLS=yes
+ '';
 }
