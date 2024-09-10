@@ -22,6 +22,7 @@ inputs = {
   # Nix packages
   nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+  unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
   # Secureboot for nixos (EXPERMENTAL)
 #   lanzaboote.url = "github:nix-community/lanzaboote";
@@ -80,7 +81,7 @@ inputs = {
 };
 
 
-outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nix-flatpak, nixos-generators, musnix, lix-module, ... } @ inputs:
+outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfox, lobster, stylix, nix-flatpak, nixos-generators, musnix, lix-module, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch
@@ -88,7 +89,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
     systemSettings = {
       timezone = "Asia/Riyadh"; # Select Timezone
       locale = "en_US.UTF-8"; # Select Locale
-      kernel = pkgs.linuxPackages_latest; # Kernel
+      kernel = pkgs-small.linuxPackages_latest; # Kernel
       swap = "zram"; # downloadmoreram.com (Legal disclaimer if this domain exists then thats based)
       audio = "pipewire"; # Audio system
       bootloader = "systemd-boot"; # Bootloader
@@ -123,6 +124,11 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
     };
 
     pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config = systemSettings.nixpkgsConfig;
+    };
+
+    pkgs-small = import unstable-small {
       inherit system;
       config = systemSettings.nixpkgsConfig;
     };

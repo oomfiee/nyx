@@ -118,6 +118,7 @@
       protonup-qt
       inkscape
       wine64Packages.stable
+      wezterm
     ];
 };
 

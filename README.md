@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./.github/banner.svg" />
+<img src="./.github/banner.png" />
 
 [![NixOS - Unstable](https://img.shields.io/badge/NixOS-Unstable-FFB5A7?style=for-the-badge&logo=NixOS&logoColor=white)](https://github.com/nixos/nixpkgs)
 </div>
