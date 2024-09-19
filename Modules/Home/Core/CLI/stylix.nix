@@ -8,7 +8,7 @@ in
     stylix.base16Scheme = ../../Themes/tomorrow-night.yaml;
     stylix.image = ../../Themes/background.png;
     stylix.polarity = "dark";
-    stylix.autoEnable = true;
+    #stylix.autoEnable = true;
     stylix.targets = {
       gtk.enable = true;
       kde.enable = true;

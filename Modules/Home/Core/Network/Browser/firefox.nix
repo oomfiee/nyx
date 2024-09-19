@@ -7,7 +7,7 @@ programs.firefox = {
       enable = true;
       version = "128.0";
   };
-  package = pkgs.firefox-bin .override {
+  package = pkgs.firefox.override {
 };
   policies = {
     DisableFirefoxStudies = true;
@@ -119,7 +119,7 @@ programs.firefox = {
                   ];
                 }];
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                    definedAliases = [ "@np" ];
+                    definedAliases = [ "@nix" ];
 };
             "paulgo" = {
                 urls = [{
@@ -194,8 +194,8 @@ programs.firefox = {
           "extensions.shield-recipe-client.enabled" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.theme.content-theme" = "2";
-          #"network.dns.disablePrefetch" = true;
-          #"network.dns.disablePrefetchFromHTTPS" = true;
+          "network.dns.disablePrefetch" = true;
+          "network.dns.disablePrefetchFromHTTPS" = true;
           "browser.send_pings" = false;
           "browser.download.useDownloadDir" = false;
           "browser.tabs.cardPreview.enabled" = false;

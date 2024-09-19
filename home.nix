@@ -38,7 +38,7 @@
 
   home = {
     sessionVariables = {
-    MOZ_ENABLE_WAYLAND = "0";
+    #MOZ_ENABLE_WAYLAND = "0";
     BROWSER = "firefox";
   };
     stateVersion = "24.05";                                 # Specificify release version
@@ -118,7 +118,7 @@
       protonup-qt
       inkscape
       wine64Packages.stable
-      wezterm
+      #wezterm
     ];
 };
 

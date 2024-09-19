@@ -7,7 +7,7 @@ services = {
   desktopManager.plasma6.enable = true;
     displayManager.sddm = {
      enable = true;
-     wayland.enable = true;
+     wayland.enable = false;
     };
     displayManager.sddm.settings = {        # Set sddm settings
       Theme = {
