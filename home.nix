@@ -39,7 +39,7 @@
   home = {
     sessionVariables = {
     #MOZ_ENABLE_WAYLAND = "0";
-    BROWSER = "firefox";
+    BROWSER = lib.mkForce "firefox";
   };
     stateVersion = "24.05";                                 # Specificify release version
     username = userSettings.username;                       # FIXME: Change 'USERNAME/oomfie' to your username
