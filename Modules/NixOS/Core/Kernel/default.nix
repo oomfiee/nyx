@@ -4,10 +4,10 @@
   # // Switch to xanmod kernel linuxKernel.packages.linux_xanmod_latest //
 boot.kernelPackages = systemSettings.kernel;
 
-   # // Earlyoom prevents systems from locking up when they run out of memory //
+   # // deprceated/unused //
 services.earlyoom.enable = false;
    
-   # // FIXME: WARNING SYSTEMD-OOMD HAS BUGS UNKNOWN WHEN ITS FIXED //
+   # // Default to systemd-oomd killer //
 systemd.oomd.enable = true;
 
     #boot.kernelModules = [ "rtl8821ce" ];
@@ -27,18 +27,18 @@ security = {
 };
 };
 
-boot.extraModprobeConfig = ''
- options iwlwifi 11n_disable=1 swcrypto=0 bt_coex_active=0 power_save=0
- options iwlmvm power_scheme=1
- options iwlwifi d0i3_disable=1
- options iwlwifi uapsd_disable=1
- options iwlwifi lar_disable=1
-'';
-
-boot.kernelParams = [
-  "pcie_port_pm=off"
-  "pcie_aspm.policy=performance"
-];
+# boot.extraModprobeConfig = ''
+#  options iwlwifi 11n_disable=1 swcrypto=0 bt_coex_active=0 power_save=0
+#  options iwlmvm power_scheme=1
+#  options iwlwifi d0i3_disable=1
+#  options iwlwifi uapsd_disable=1
+#  options iwlwifi lar_disable=1
+# '';
+#
+# boot.kernelParams = [
+#   "pcie_port_pm=off"
+#   "pcie_aspm.policy=performance"
+# ];
 
 }
 

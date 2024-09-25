@@ -161,4 +161,6 @@ home.extraProfileCommands = ''
   fi
 '';
 
+systemd.user.startServices = "sd-switch";
+
 }

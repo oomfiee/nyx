@@ -6,6 +6,7 @@ networking = {
   networkmanager = {
     #dns = "none";
       enable = true;
+      wifi.powersave = false;
     };
 };
 

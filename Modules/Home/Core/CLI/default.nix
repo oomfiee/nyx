@@ -9,6 +9,6 @@
     #./git.nix
     #./stylix.nix
     #./fastfetch.nix
-    ./containers.nix
+    #./containers.nix
     ];
 }

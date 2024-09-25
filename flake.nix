@@ -1,19 +1,6 @@
 {
 description = "We ball, we are production.";
 
-
-nixConfig = {
-    extra-substituters = [
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-    ];
-
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-};
-
 inputs = {
 
   # Follow the specified input
@@ -99,8 +86,19 @@ outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfo
         permittedInsecurePackages = [
           "olm-3.2.16"
         ];
-        };
-    };
+       nixConfig = {
+       extra-substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+       ];
+
+       extra-trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        ];
+      };
+  };
+};
 
     # ----- USER SETTINGS ----- #
     userSettings = rec {
@@ -125,11 +123,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfo
     };
 
     pkgs-stable = import nixpkgs-stable {
-      inherit system;
-      config = systemSettings.nixpkgsConfig;
-    };
-
-    pkgs-small = import unstable-small {
       inherit system;
       config = systemSettings.nixpkgsConfig;
     };

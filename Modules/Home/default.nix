@@ -4,6 +4,7 @@
     ./Core
     ./Desktop
     ./Users
+    ./VM
     ];
 }
 
