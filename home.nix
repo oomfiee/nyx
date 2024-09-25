@@ -46,10 +46,8 @@
     homeDirectory = "/home/"+userSettings.username;         # FIXME: Change 'USERNAME/oomfie' to your username
     packages = with pkgs;                                   # List all of your packages here
     [
-      eza
       onlyoffice-bin
       ani-cli
-      zoxide
       distrobox
       ffmpeg
       fdk_aac
@@ -67,7 +65,7 @@
       #cups
       imagemagick
       #kde-gtk-config
-      xdg-desktop-portal-kde
+      #xdg-desktop-portal-kde
       #bottom
       pinentry-qt
       partition-manager
@@ -88,7 +86,7 @@
       #gamescope
       #stremio
       #armcord
-      arrpc
+      #arrpc
       zola
       #libsForQt5.lightly
       #gparted
@@ -101,10 +99,10 @@
       #doomrunner
       fastfetch
       starship
-      sbctl
-      niv
-      yaml-language-server
-      nil
+      #sbctl
+      #niv
+      #yaml-language-server
+      #nil
       just
       #freetube
       #dorion
