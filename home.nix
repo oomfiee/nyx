@@ -56,24 +56,24 @@
       syncthing
       manrope
       fuse
-      qt5ct
+      #qt5ct
       ark
-      hplip
+      #hplip
       kdePackages.kdeconnect-kde
-      inputs.lobster.packages.x86_64-linux.lobster
+      #inputs.lobster.packages.x86_64-linux.lobster
       kdePackages.kate
       android-tools
       wget
-      cups
+      #cups
       imagemagick
       #kde-gtk-config
       xdg-desktop-portal-kde
-      bottom
+      #bottom
       pinentry-qt
       partition-manager
       #pipx
-      signal-desktop
-      trackma-qt
+      #signal-desktop
+      #trackma-qt
       #qpwgraph
       keepassxc
       nheko
@@ -85,18 +85,17 @@
       #vscodium
       kdePackages.kcolorchooser
       fzf
-      gamescope
-      stremio
-      armcord
+      #gamescope
+      #stremio
+      #armcord
       arrpc
       zola
       #libsForQt5.lightly
-      inkscape
-      gparted
-      tor-browser-bundle-bin
-      (pkgs.uutils-coreutils.override { prefix = ""; })
-      protonvpn-gui
-      ruffle
+      #gparted
+      #tor-browser-bundle-bin
+      #(pkgs.uutils-coreutils.override { prefix = ""; })
+      #protonvpn-gui
+      #ruffle
       #grapejuice
       #gimp
       #doomrunner
@@ -111,9 +110,9 @@
       #dorion
       #atuin
       #kdePackages.breeze
-      kdePackages.qt5compat
-      kdePackages.plasma5support
-      steam
+      #kdePackages.qt5compat
+      #kdePackages.plasma5support
+      #steam
       lutris
       protonup-qt
       inkscape
@@ -127,33 +126,8 @@ home.file."${config.xdg.cacheHome}/flatpak/override/global".text = ''
   filesystems=/run/current-system/sw/share/X11/fonts:ro;/nix/store:ro;xdg-config/gtk-3.0:ro;xdg-config/gtk-4.0:ro;xdg-config/gtkrc:ro
 '';
 
-# gtk.theme = {
-#   package = pkgs.kdePackages.breeze-gtk;
-#   name = "Breeze";
-# };
-
-# home.pointerCursor = {
-#   gtk.enable = true;
-#   package = pkgs.kdePackages.breeze-icons;
-#   name = "breeze_cursor";
-# };
 
 fonts.fontconfig.enable = true;
-
-systemd.user.services.arrpc = {
-  Unit = {
-    Description = "Start arrpc server";
-};
-  Install = {
-    WantedBy = [ "default.target" ];
-};
-  Service = {
-    ExecStart = "${pkgs.writeShellScript "watch-store" ''
-      #!/run/current-system/sw/bin/bash
-      arrpc
-    ''}";
-  };
-};
 
 home.extraProfileCommands = ''
   if [[ -d "$out/share/applications" ]] ; then

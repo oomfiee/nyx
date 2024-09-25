@@ -12,7 +12,5 @@ services.pipewire = {
   pulse.enable = true;
 };
 
-  musnix.enable = true;
-
   programs.noisetorch.enable = true;
 }

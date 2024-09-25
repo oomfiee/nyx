@@ -9,7 +9,6 @@ inputs = {
   # Nix packages
   nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-  unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
   # Secureboot for nixos (EXPERMENTAL)
 #   lanzaboote.url = "github:nix-community/lanzaboote";
@@ -47,7 +46,7 @@ inputs = {
   #};
 
   # Someone is going to kill me for making HM manage Flatpak packages
-  nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+  #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
 
   nixos-generators = {
     url = "github:nix-community/nixos-generators";
@@ -68,7 +67,7 @@ inputs = {
 };
 
 
-outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfox, lobster, stylix, nix-flatpak, nixos-generators, musnix, lix-module, ... } @ inputs:
+outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch
@@ -76,7 +75,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfo
     systemSettings = {
       timezone = "Asia/Riyadh"; # Select Timezone
       locale = "en_US.UTF-8"; # Select Locale
-      kernel = pkgs.linuxPackages_zen; # Kernel
+      kernel = pkgs.linuxPackages_6_10; # Kernel
       Nvidia-driver = "beta";
       swap = "zram"; # downloadmoreram.com (Legal disclaimer if this domain exists then thats based)
       audio = "pipewire"; # Audio system
@@ -148,7 +147,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfo
         ./Modules/NixOS
         ./Modules/Home
         ./Modules/NixOS/Hardware/GPU/nvidia.nix
-        nix-flatpak.nixosModules.nix-flatpak
         #lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
         musnix.nixosModules.musnix
@@ -192,7 +190,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, unstable-small, home-manager, arkenfo
         ./Modules/NixOS
         ./Modules/Home
         #./Modules/NixOS/Hardware/GPU/nvidia.nix
-        nix-flatpak.nixosModules.nix-flatpak
         #lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
         musnix.nixosModules.musnix
