@@ -1,7 +1,7 @@
 { pkgs, modulesPath, lib, config, ... }:
 
 {
-  imports = [ "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma5.nix" ];
+  imports = [ "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix" ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   # Enable the Plasma 5 Desktop Environment.
@@ -32,10 +32,10 @@
   services.displayManager = {
     # Automatically login as nixos.
       sddm.enable = true;
-      autoLogin = {
-        enable = true;
-        user = "nixos";
-      };
+      #autoLogin = {
+      #  enable = true;
+      #  user = "nixos";
+      #};
     };
 
 
