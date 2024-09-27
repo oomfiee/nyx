@@ -1,6 +1,19 @@
 {
 description = "We ball, we are production.";
 
+nixConfig = {
+
+extra-substituters = [
+  "https://cache.nixos.org"
+  "https://nix-community.cachix.org"
+];
+
+extra-trusted-public-keys = [
+  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+];
+};
+
 inputs = {
 
   # Follow the specified input
@@ -85,17 +98,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         permittedInsecurePackages = [
           "olm-3.2.16"
         ];
-       nixConfig = {
-       extra-substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-       ];
-
-       extra-trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        ];
-      };
   };
 };
 
@@ -149,7 +151,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         ./Modules/NixOS/Hardware/GPU/nvidia.nix
         #lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
-        musnix.nixosModules.musnix
         #stylix.nixosModules.stylix
         lix-module.nixosModules.default
         {
@@ -192,7 +193,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         #./Modules/NixOS/Hardware/GPU/nvidia.nix
         #lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
-        musnix.nixosModules.musnix
         #stylix.nixosModules.stylix
         {
           home-manager = {
