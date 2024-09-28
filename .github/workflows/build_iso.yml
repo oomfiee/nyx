@@ -1,4 +1,4 @@
-name: Build 🏗️ and Publish 📀
+name: ISO build
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@v14
     - uses: DeterminateSystems/magic-nix-cache-action@v8
-    - name: Build 👷 ISO 💿️
+    - name: Build Custom ISO
       run: |
         nix build .#nixosConfigurations.iso-console.config.system.build.isoImage -L
         mkdir iso || true
@@ -19,19 +19,19 @@ jobs:
         sudo mv "result/iso/${ISO}" iso/console-${ISO}
         sha256sum "iso/console-${ISO}" > "iso/console-${ISO}.sha256"
         sed -i -r "s/ .*\/(.+)/  \1/g" "iso/console-${ISO}.sha256"
-    - name: Draft release ✍️
+    - name: draft
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh release create "${{ github.ref }}" --draft --generate-notes
-    - name: Upload ⤴️ ISO 💿️
+    - name: Upload
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         for artefact in "iso/"*; do
           gh release upload "${{ github.ref }}" "${artefact}" --clobber
         done
-    - name: Publish release 🎁
+    - name: Publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
