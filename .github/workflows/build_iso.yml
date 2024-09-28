@@ -19,7 +19,6 @@ jobs:
         nix build .#iso --accept-flake-config
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sudo mv "./result/iso/${ISO}" iso/${ISO}
         sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
         sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
         ls -la
@@ -27,7 +26,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        for artefact in ./"iso/*"; do
+        for artefact in /result/"iso/*"; do
           gh release upload "${{ github.ref }}" "${artefact}" --clobber
         done
     - name: Publish
