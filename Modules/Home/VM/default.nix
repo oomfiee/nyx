@@ -1,66 +1,80 @@
-{pkgs, config, lib, userSettings, ...}:
-
+{ pkgs, config, userSettings, ... }:
 let
-
-devices = [
-  "10de:2507" # Nvidia GPU
-  "10de:228e" # Nvidia audio controller
-];
-
+  # Change this to match your system's CPU.
+  platform = "intel";
+  # Change this to specify the IOMMU ids you wrote down earlier.
+  vfioIds = [ "10de:2507" "10de:228e" ];
 in {
 
-programs.dconf.enable = true;
+  programs.dconf.enable = true;
 
-users.users.${userSettings.username}.extraGroups = [ "libvirtd" ];
-
-boot.initrd.kernelModules = [
-  "vfio_pci"
-  "vfio"
-  "vfio_iommu_type1"
-
-  "nvidia"
-  "nvidia_modeset"
-  "nvidia_uvm"
-  "nvidia_drm"
-];
-
-virtualisation = {
-libvirtd = {
-  enable = true;
-  qemu = {
-    swtpm.enable = true;
-    ovmf.enable = true;
-    ovmf.packages = [ pkgs.OVMFFull.fd ];
+  # Configure kernel options to make sure IOMMU & KVM support is on.
+  boot = {
+    kernelModules = [ "kvm-${platform}" "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio" ];
+    kernelParams = [ "${platform}_iommu=on" "${platform}_iommu=pt" "kvm.ignore_msrs=1" ];
+    extraModprobeConfig = "options vfio-pci ids=${builtins.concatStringsSep "," vfioIds}";
   };
-  onBoot = "ignore";
-  onShutdown = "shutdown";
-};
-  spiceUSBRedirection.enable = true;
-};
 
-boot.kernelParams = [
-#   "intel_iommu=on"
-#   "iommu=pt"
-  "vfio-pci.ids=${lib.concatStringsSep "," devices}"
-];
+  # Add a file for looking-glass to use later. This will allow for viewing the guest VM's screen in a
+  # performant way.
+  systemd.tmpfiles.rules = [
+      "f /dev/shm/looking-glass 0660 ${userSettings.username} qemu-libvirtd -"
+  ];
 
-programs.virt-manager.enable = true;
-# https://discourse.nixos.org/t/virt-manager-cannot-find-virtiofsd/26752/2
-# add virtiofsd to filesystem xml
-# <binary path="/run/current-system/sw/bin/virtiofsd"/>
-environment.systemPackages = with pkgs; [
-  virtiofsd
-  virt-manager
-  looking-glass-client
-  virt-viewer
-  spice spice-gtk
-  spice-protocol
-  win-virtio
-  win-spice
-];
+  # Add virt-manager and looking-glass to use later.
+  environment.systemPackages = with pkgs; [
+      virt-manager
+      virtiofsd
+      spice spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
+      looking-glass-client
+  ];
 
-systemd.tmpfiles.rules = [
-    "f /dev/shm/looking-glass 0660 ${userSettings.username} libvirtd -"
-];
-services.spice-vdagentd.enable = true;
+  # Enable virtualisation programs. These will be used by virt-manager to run your VM.
+  virtualisation = {
+     libvirtd = {
+       enable = true;
+       extraConfig = ''
+         user="${userSettings.username}"
+       '';
+
+       # Don't start any VMs automatically on boot.
+       onBoot = "ignore";
+       # Stop all running VMs on shutdown.
+       onShutdown = "shutdown";
+
+       qemu = {
+         package = pkgs.qemu_kvm;
+         swtpm.enable = true;
+         runAsRoot = true;
+         ovmf = {
+          enable = true;
+          packages = [(pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+         }).fd];
+         };
+         spiceUSBRedirection.enable = true;
+         verbatimConfig = ''
+            namespaces = []
+           user = "+${builtins.toString config.users.users.${userSettings.username}.uid}"
+         '';
+       };
+    };
+  };
+
+  users.users.${userSettings.username}.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
+
+  programs.virt-manager.enable = true;
+  services.spice-vdagentd.enable = true;
+  home-manager.users.${userSettings.username} = {
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
+      };
+    };
+    };
 }

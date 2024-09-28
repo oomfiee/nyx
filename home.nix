@@ -71,7 +71,7 @@
       partition-manager
       #pipx
       #signal-desktop
-      #trackma-qt
+      trackma-qt
       #qpwgraph
       keepassxc
       nheko
@@ -85,7 +85,7 @@
       fzf
       #gamescope
       #stremio
-      #armcord
+      armcord
       #arrpc
       zola
       #libsForQt5.lightly

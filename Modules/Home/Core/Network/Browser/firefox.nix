@@ -79,7 +79,7 @@ programs.firefox = {
     darkreader
     ublock-origin
 #     libredirect
-    mal-sync
+#    mal-sync
     xbrowsersync
 ];
 

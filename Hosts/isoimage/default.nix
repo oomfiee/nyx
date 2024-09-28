@@ -92,5 +92,8 @@
     "nvidia-drm.fbdev=1"
     "nvidia-drm.modeset=1"
 ];
+
+services.qemuGuest.enable = true;
+services.spice-vdagentd.enable = true;
 }
 
