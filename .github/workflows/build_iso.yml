@@ -19,9 +19,9 @@ jobs:
         nix build .#iso -L --accept-flake-config
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sudo mv "result/iso/${ISO}" iso/nyx-${ISO}
-        sha256sum "iso/nyx-${ISO}" > "iso/$nyx-{ISO}.sha256"
-        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/nyx-${ISO}.sha256"
+        sudo mv "result/iso/${ISO}" iso/${ISO}
+        sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
+        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
     - name: Upload
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
