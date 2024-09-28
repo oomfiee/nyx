@@ -1,8 +1,11 @@
 name: ISO build
 
 on:
+  workflow_dispatch:
+  concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-iso
+  cancel-in-progress: true
   push:
-    tags: ['*']
 
 jobs:
   build-console-iso:
