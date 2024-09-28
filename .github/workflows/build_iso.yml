@@ -22,6 +22,7 @@ jobs:
         sudo mv "result/iso/${ISO}" iso/${ISO}
         sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
         sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
+        ls -la
     - name: Upload
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
