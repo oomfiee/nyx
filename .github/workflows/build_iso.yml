@@ -19,8 +19,8 @@ jobs:
         nix build .#iso --accept-flake-config
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
-        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
+        sha256sum "/result/iso/${ISO}" > "/result/iso/${ISO}.sha256"
+        sed -i -r "s/ .*\/(.+)/  \1/g" "/result/iso/${ISO}.sha256"
         ls -la
     - name: Upload
       env:
