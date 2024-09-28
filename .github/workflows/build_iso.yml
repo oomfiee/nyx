@@ -1,39 +1,32 @@
-name: ISO build
+name: "Build ISO"
 
 on:
   workflow_dispatch:
-  push:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-iso
   cancel-in-progress: true
 
 jobs:
-  build-iso:
+  ISO:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: "write"
+      contents: "read"
     steps:
-    - uses: actions/checkout@v4
-    - uses: DeterminateSystems/nix-installer-action@v14
-    - uses: DeterminateSystems/magic-nix-cache-action@v8
-    - name: Build Custom ISO
-      run: |
-        nix build .#iso --accept-flake-config
-        mkdir iso || true
-        ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sha256sum "/result/iso/${ISO}" > "/result/iso/${ISO}.sha256"
-        sed -i -r "s/ .*\/(.+)/  \1/g" "/result/iso/${ISO}.sha256"
-        ls -la
-    - name: Upload
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        for artefact in /result/"iso/*"; do
-          gh release upload "${{ github.ref }}" "${artefact}" --clobber
-        done
-    - name: Publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        if [ "$(gh release view "${{ github.ref }}" --json assets --template '{{len .assets}}')" -lt 0 ]; then
-          exit 1
-        fi
-        gh release edit "${{ github.ref }}" --draft=false
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    - name: install nix
+      uses: DeterminateSystems/nix-installer-action@main
+      #with:
+      #github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - run: nix build .#iso
+    - name: Upload ISO as artifact
+      id: upload
+      uses: actions/upload-artifact@v4
+      with:
+          name: ISO
+          path: |
+            ./result/iso/*.iso
+          if-no-files-found: error
+          retention-days: 0
+          compression-level: 0
