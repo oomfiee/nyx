@@ -14,19 +14,18 @@ jobs:
     - uses: actions/checkout@v4
     - uses: DeterminateSystems/nix-installer-action@v14
     - uses: DeterminateSystems/magic-nix-cache-action@v8
+    - name: Get current date
+        id: date
+        run: |
+          echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
     - name: Build Custom ISO
       run: |
         nix build .#iso -L --accept-flake-config
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sudo mv "result/iso/${ISO}" iso/${ISO}
-        sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
-        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
-    - name: draft
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        gh release create "${{ github.ref }}" --draft --generate-notes
+        sudo mv "result/iso/${ISO}" iso/nyx-${ISO}
+        sha256sum "iso/nyx-${ISO}" > "iso/$nyx-{ISO}.sha256"
+        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/nyx-${ISO}.sha256"
     - name: Upload
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
