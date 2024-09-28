@@ -8,7 +8,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-console-iso:
+  build-iso:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -16,12 +16,12 @@ jobs:
     - uses: DeterminateSystems/magic-nix-cache-action@v8
     - name: Build Custom ISO
       run: |
-        nix build .#nixosConfigurations.iso-console.config.system.build.isoImage -L
+        nix build .#iso -L --accept-flake-config
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sudo mv "result/iso/${ISO}" iso/console-${ISO}
-        sha256sum "iso/console-${ISO}" > "iso/console-${ISO}.sha256"
-        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/console-${ISO}.sha256"
+        sudo mv "result/iso/${ISO}" iso/${ISO}
+        sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
+        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
     - name: draft
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
