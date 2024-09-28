@@ -16,7 +16,7 @@ jobs:
     - uses: DeterminateSystems/magic-nix-cache-action@v8
     - name: Build Custom ISO
       run: |
-        nix build .#iso -L --accept-flake-config
+        nix build .#iso --accept-flake-config
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
         sudo mv "result/iso/${ISO}" iso/${ISO}
