@@ -214,14 +214,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         system = "x86_64-linux";
         modules = [
         ./Hosts/isoimage
-        {
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit pkgs-stable;
-          };
-        }
         ];
         format = "iso";
       };
