@@ -41,10 +41,11 @@
     };
 
 
-  boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages;
   nixpkgs.config.allowUnfree = true;
   boot.supportedFilesystems.zfs = lib.mkForce false;
 
   services.xserver.videoDrivers = ["nvidia"];
+  hardware.nvidia.open = true;
 }
 
