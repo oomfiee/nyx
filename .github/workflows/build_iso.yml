@@ -18,7 +18,7 @@ jobs:
         nix build .#iso -L
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sudo ln $ISO iso/nyx.iso
+        sudo ln "result/iso/${ISO}" iso/nyx.iso
         ls -la iso
         sha256sum "iso/nyx.iso" > "iso/nyx.iso.sha256"
         sed -i -r "s/ .*\/(.+)/  \1/g" "iso/nyx.iso.sha256"
