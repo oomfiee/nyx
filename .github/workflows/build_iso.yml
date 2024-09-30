@@ -18,9 +18,9 @@ jobs:
         nix build .#iso -L
         mkdir iso || true
         ISO=$(head -n1 result/nix-support/hydra-build-products | cut -d'/' -f6)
-        sudo ln -s "result/iso/${ISO}" iso/${ISO}
-        sha256sum "iso/${ISO}" > "iso/${ISO}.sha256"
-        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/${ISO}.sha256"
+        sudo ln $ISO iso/nyx.iso
+        sha256sum "iso/nyx.iso" > "iso/nyx.iso.sha256"
+        sed -i -r "s/ .*\/(.+)/  \1/g" "iso/nyx.iso.sha256"
     - name: Upload
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
