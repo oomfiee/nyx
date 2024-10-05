@@ -22,35 +22,35 @@ xdg.configFile."${config.xdg.configHome}/fastfetch/config.jsonc".text = with pkg
     "modules": [
         {
           "type": "os",
-          "key": " ◇ ",
-          "keyColor": "yellow",
+          "key": " 󰫢 ",
+          "keyColor": "red",
           "format": "{3}"
         },
         {
           "type": "kernel",
-          "key": " ◇ ",
-          "keyColor": "yellow"
+          "key": " 󰫢 ",
+          "keyColor": "red"
         },
         {
           "type": "packages",
-          "key": " ◇ ",
-          "keyColor": "yellow",
+          "key": " 󰫢 ",
+          "keyColor": "red",
           "format": "{1}"
         },
         {
           "type": "shell",
-          "key": " ◇ ",
-          "keyColor": "yellow"
+          "key": " 󰫢 ",
+          "keyColor": "red"
         },
         {
           "type": "wm",
-          "key": " ◇ ",
-          "keyColor": "yellow"
+          "key": " 󰫢 ",
+          "keyColor": "red"
         },
         {
           "type": "uptime",
-          "key": " ◇ ",
-          "keyColor": "yellow"
+          "key": " 󰫢 ",
+          "keyColor": "red"
         }
     ]
 }

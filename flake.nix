@@ -1,18 +1,5 @@
 {
-description = "We ball, we are production.";
-
-nixConfig = {
-
-extra-substituters = [
-  "https://cache.nixos.org"
-  "https://nix-community.cachix.org"
-];
-
-extra-trusted-public-keys = [
-  "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-];
-};
+description = "Overly engineered for some reason.";
 
 inputs = {
 
@@ -112,8 +99,8 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
       prompt = "starship";
       sh = "fish";
       term = "wezterm";
-      font = "Jetbrains Mono";
-      fontpkg = pkgs.jetbrains-mono;
+      font = "Inconsolata";
+      fontpkg = pkgs.inconsolata-nerdfont;
     };
 
     lib = nixpkgs.lib;

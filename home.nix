@@ -7,7 +7,7 @@
   ( ./. + "/Modules/Home/" + "/Core/Video"+("/"+userSettings.video))
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.prompt)+".nix")
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.sh)+".nix")
-  #( ./. + "/Modules/Home/" + "/Core/Term"+("/"+userSettings.term)+".nix")
+  #( ./. + "/Modules/Home/" + "/Core/Term"+("/"+userSettings.term)+".nix") # Broken on Nvidia GPUs
   #( ./. + "/Modules/Core/Network/Email"+("/"+userSettings.email)+".nix")
   ./Modules/Home/Core/CLI/git.nix
   ./Modules/Home/Core/CLI/fastfetch.nix
@@ -65,7 +65,7 @@
       #cups
       imagemagick
       #kde-gtk-config
-      #xdg-desktop-portal-kde
+      xdg-desktop-portal-kde
       #bottom
       pinentry-qt
       partition-manager

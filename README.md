@@ -30,7 +30,7 @@ nix-shell -p nixFlakes git
 after you have done that you will git clone the repo then use this command:
 
 ```shell
-[nix-shell:~]$ cd nyx
+[nix-shell:~]$ cd [Reponame]
 
 [nix-shell:~]$ rm ~/.gtkrc-2.0
 
