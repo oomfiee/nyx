@@ -99,8 +99,8 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
       prompt = "starship";
       sh = "fish";
       term = "wezterm";
-      font = "Inconsolata";
-      fontpkg = pkgs.inconsolata-nerdfont;
+      font = "Jetbrains Mono";
+      fontpkg = pkgs.jetbrains-mono;
     };
 
     lib = nixpkgs.lib;

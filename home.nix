@@ -115,6 +115,7 @@
       protonup-qt
       inkscape
       wine64Packages.stable
+      inconsolata-nerdfont
       #wezterm
     ];
 };
