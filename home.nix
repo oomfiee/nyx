@@ -4,6 +4,7 @@
   imports = [
   inputs.arkenfox.hmModules.arkenfox
   ( ./. + "/Modules/Home/" + "/Core/Network/Browser"+("/"+userSettings.browser)+".nix")
+  #./Modules/Home/Core/Network/Browser/chromium.nix
   ( ./. + "/Modules/Home/" + "/Core/Video"+("/"+userSettings.video))
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.prompt)+".nix")
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.sh)+".nix")
@@ -58,7 +59,8 @@
       ark
       #hplip
       kdePackages.kdeconnect-kde
-      #inputs.lobster.packages.x86_64-linux.lobster
+      inputs.lobster.packages.x86_64-linux.lobster
+      tailscale
       kdePackages.kate
       android-tools
       wget
@@ -136,4 +138,5 @@ home.extraProfileCommands = ''
 
 systemd.user.startServices = "sd-switch";
 
+# systemd.user.tmpfiles.rules = [ "L /var/lib/mixium/mixium/world/ ---- ./Modules/Home/Core/Games/Minecraft/world/" ];
 }

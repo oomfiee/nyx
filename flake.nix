@@ -64,10 +64,12 @@ inputs = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 };
 
 
-outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, ... } @ inputs:
+outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch

@@ -1,4 +1,4 @@
-{ config, pkgs, systemSettings, userSettings, ...}:
+{ config, pkgs, systemSettings, userSettings, ... }:
 {
   users.users.${userSettings.username} = {
     isNormalUser = true;

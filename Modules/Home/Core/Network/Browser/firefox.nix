@@ -49,9 +49,9 @@ programs.firefox = {
     "0600".enable = true;
 };
 
-#   userChrome = ''
-#     #alltabs-button { display: none !important; }
-# '';
+   userChrome = ''
+     #alltabs-button { display: none !important; }
+ '';
 
   userContent = ''
         @-moz-document url("about:newtab"), url("about:home") {
@@ -203,8 +203,10 @@ programs.firefox = {
           "browser.tabs.inTitlebar" = 0;
           "browser.tabs.firefox-view" = false;
           "browser.tabs.firefox-view-newIcon" = false;
-          "browser.tabs.tabmanager.enabled" = false;
+          #"browser.tabs.tabmanager.enabled" = false;
           "browser.tabs.firefox-view-next" = false;
+          "browser.tabs.hoverPreview.enabled" = false;
+          "browser.tabs.hoverPreview.showThumbnails" = false;
       };
     };
   };

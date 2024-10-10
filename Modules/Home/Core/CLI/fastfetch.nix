@@ -1,4 +1,4 @@
-{pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 {
 
 xdg.configFile."${config.xdg.configHome}/fastfetch/config.jsonc".text = with pkgs; ''

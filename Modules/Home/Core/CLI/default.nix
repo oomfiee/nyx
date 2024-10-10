@@ -1,4 +1,4 @@
-{pkgs, config, lib, userSettings, inputs, ...}:
+{ pkgs, config, lib, userSettings, inputs, ... }:
 {
 
    imports = [
@@ -9,6 +9,6 @@
     #./git.nix
     #./stylix.nix
     #./fastfetch.nix
-    #./containers.nix
+    ./containers.nix
     ];
 }

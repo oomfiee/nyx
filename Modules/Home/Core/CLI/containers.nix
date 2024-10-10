@@ -1,4 +1,4 @@
-{pkgs, lib, config, inputs, ...}:
+{ pkgs, lib, config, inputs, ... }:
 {
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;

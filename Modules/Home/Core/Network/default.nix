@@ -1,8 +1,10 @@
-{pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 {
     imports = [
     ./DNS
-    ./Firewall
+    #./Firewall
     ./Wireless/nm.nix
     ];
+
+    services.tailscale.enable = true;
 }

@@ -1,4 +1,4 @@
-{pkgs, config, lib, systemSettings, ...}:
+{ pkgs, config, lib, systemSettings, ... }:
 {
 programs = {
   gamescope.enable = true;

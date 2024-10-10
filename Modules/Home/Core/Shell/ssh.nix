@@ -1,4 +1,4 @@
-{pkgs, config, lib, ...}:
+{ pkgs, config, lib, ... }:
 {
   # // Enable SSHFS service //
   services.openssh.allowSFTP = true;

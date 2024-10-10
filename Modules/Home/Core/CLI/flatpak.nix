@@ -1,4 +1,4 @@
-{pkgs, lib, config, inputs, ...}: {
+{ pkgs, lib, config, inputs, ... }: {
   system.fsPackages = [ pkgs.bindfs ];
   fileSystems =
     let

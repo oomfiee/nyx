@@ -1,4 +1,4 @@
-{pkgs, lib, config, ...}:
+{ pkgs, lib, config, ... }:
 {
 
 xdg.configFile."${config.xdg.configHome}/mpv/script-opts/youtube-upnext.conf".text = with pkgs; ''

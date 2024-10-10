@@ -1,8 +1,8 @@
 { pkgs, modulesPath, lib, config, ... }:
 
 {
-  imports = [ 
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix" 
+  imports = [
+    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-calamares-plasma6.nix"
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -15,7 +15,7 @@
     parted
     git
     disko
-  
+
     # Calamares for graphical installation
     #libsForQt5.kpmcore
     #calamares-nixos
@@ -48,4 +48,3 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.open = true;
 }
-

@@ -1,4 +1,4 @@
-{pkgs, lib, config, ...}:
+{ pkgs, lib, config, ... }:
 {
 
 home.file."${config.xdg.configHome}/mpv/scripts/uosc/main.lua" = {

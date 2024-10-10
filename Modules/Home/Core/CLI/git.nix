@@ -1,4 +1,4 @@
-{pkgs, lib, config, userSettings, ...}:
+{ pkgs, lib, config, userSettings, ... }:
 {
 
  # // Enables git service //

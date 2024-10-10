@@ -1,4 +1,4 @@
-{pkgs, config, lib, systemSettings, ...}:
+{ pkgs, config, lib, systemSettings, ... }:
 {
 
   # // Switch to xanmod kernel linuxKernel.packages.linux_xanmod_latest //
