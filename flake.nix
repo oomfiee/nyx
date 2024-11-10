@@ -66,10 +66,31 @@ inputs = {
     };
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+#     nixvim ={
+#       url = "github:nix-community/nixvim";
+#       inputs.nixpkgs.follows = "nixpkgs";
+#     };
+
+#     utils.url = "github:numtide/flake-utils";
+
+    umu = {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 };
 
+#   nixConfig = {
+#     extra-substituters = [
+#       "domain"
+#     ];
+#     extra-trusted-public-keys = [
+#       "randomash:212"
+#     ];
+#   };
 
-outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, ... } @ inputs:
+
+outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, nixos-cosmic, umu, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch
@@ -78,7 +99,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
       timezone = "Asia/Riyadh"; # Select Timezone
       locale = "en_US.UTF-8"; # Select Locale
       kernel = pkgs.linuxPackages_latest; # Kernel
-      Nvidia-driver = "latest";
+      Nvidia-driver = "beta";
       swap = "zram"; # downloadmoreram.com (Legal disclaimer if this domain exists then thats based)
       audio = "pipewire"; # Audio system
       bootloader = "systemd-boot"; # Bootloader
@@ -96,6 +117,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
       gitname = "oomfie";
       gitemail = "dev.77r2m@simplelogin.co";
       browser = "firefox";
+      email = "thunderbird";
       de = "KDE";
       video = "mpv";
       prompt = "starship";
@@ -203,6 +225,15 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         system = "x86_64-linux";
         modules = [
         ./Hosts/isoimage
+        ];
+        format = "iso";
+      };
+
+  cosmic-iso = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        modules = [
+        ./Hosts/isoimage/cosmic.nix
+        nixos-cosmic.nixosModules.default
         ];
         format = "iso";
       };

@@ -1,6 +1,8 @@
 { pkgs, config, lib, systemSettings, ... }:
 {
 
+#imports = [ ./selinux.nix ];
+
   # // Switch to xanmod kernel linuxKernel.packages.linux_xanmod_latest //
 boot.kernelPackages = systemSettings.kernel;
 
@@ -35,10 +37,10 @@ security = {
 #  options iwlwifi lar_disable=1
 # '';
 #
-# boot.kernelParams = [
-#   "pcie_port_pm=off"
+ boot.kernelParams = [
+   "pcie_aspm=off"
 #   "pcie_aspm.policy=performance"
-# ];
+ ];
 
 }
 

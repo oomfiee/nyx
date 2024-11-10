@@ -12,5 +12,7 @@ in {
 
         # // Enable firmware update service //
         services.fwupd.enable = true;
+
+        services.power-profiles-daemon.enable = true;
     };
 }

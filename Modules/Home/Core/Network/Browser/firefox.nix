@@ -20,12 +20,12 @@ programs.firefox = {
     "0100" = {
     "0104"."browser.newtabpage.enabled".value = true;
 };
-    "4500" = {
-    enable = true;
-    "4504"."privacy.resistFingerprinting.letterboxing".value = false;
-    "4504"."privacy.resistFingerprinting.letterboxing.dimensions".value = "1920x1080";
-    "4501"."privacy.resistFingerprinting".value = false;
-};
+#     "4500" = {
+#     enable = true;
+#     "4504"."privacy.resistFingerprinting.letterboxing".value = false;
+#     "4504"."privacy.resistFingerprinting.letterboxing.dimensions".value = "1920x1080";
+#     "4501"."privacy.resistFingerprinting".value = false;
+# };
     "8000" = {
     enable = true;
     "0803"."browser.search.suggest.enabled".value = true;
@@ -207,6 +207,7 @@ programs.firefox = {
           "browser.tabs.firefox-view-next" = false;
           "browser.tabs.hoverPreview.enabled" = false;
           "browser.tabs.hoverPreview.showThumbnails" = false;
+          "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
       };
     };
   };

@@ -9,14 +9,22 @@
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.prompt)+".nix")
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.sh)+".nix")
   #( ./. + "/Modules/Home/" + "/Core/Term"+("/"+userSettings.term)+".nix") # Broken on Nvidia GPUs
-  #( ./. + "/Modules/Core/Network/Email"+("/"+userSettings.email)+".nix")
+  ( ./. + "/Modules/Home/Core/Network/Email"+("/"+userSettings.email)+".nix")
   ./Modules/Home/Core/CLI/git.nix
   ./Modules/Home/Core/CLI/fastfetch.nix
   ./Modules/Home/Core/CLI/stylix.nix
+  #./Modules/Home/Core/CLI/nvim.nix
+  #inputs.nixvim.homeManagerModules.nixvim
   inputs.stylix.homeManagerModules.stylix
   ];
 
-  gtk.enable = true;
+  gtk = {
+    enable = true;
+#     theme = {
+#       name = "Breeze";
+#       package = pkgs.kdePackages.breeze-gtk;
+#     };
+    };
   qt.enable = true;
 
   xdg = {
@@ -25,6 +33,8 @@
     dataHome = "${config.home.homeDirectory}/.local/share";
     configHome = "${config.home.homeDirectory}/.config";
     stateHome = "${config.home.homeDirectory}/.local/state";
+    portal.extraPortals = with pkgs; [ xdg-desktop-portal-kde ];
+    portal.config.common.default = "kde";
     userDirs = {
       enable      = true;
       createDirectories = true;
@@ -48,6 +58,9 @@
     packages = with pkgs;                                   # List all of your packages here
     [
       onlyoffice-bin
+      simplex-chat-desktop
+      sshfs
+      ripgrep
       ani-cli
       distrobox
       ffmpeg
@@ -59,6 +72,7 @@
       ark
       #hplip
       kdePackages.kdeconnect-kde
+      (inputs.umu.packages.${pkgs.system}.umu.override {version = "${inputs.umu.shortRev}";})
       inputs.lobster.packages.x86_64-linux.lobster
       tailscale
       kdePackages.kate
@@ -67,7 +81,8 @@
       #cups
       imagemagick
       #kde-gtk-config
-      xdg-desktop-portal-kde
+      #xdg-desktop-portal-kde
+      #xdg-desktop-portal
       #bottom
       pinentry-qt
       partition-manager
@@ -87,13 +102,14 @@
       fzf
       #gamescope
       #stremio
-      armcord
+      #armcord
+      legcord
       #arrpc
       zola
       #libsForQt5.lightly
       #gparted
       #tor-browser-bundle-bin
-      #(pkgs.uutils-coreutils.override { prefix = ""; })
+      (pkgs.uutils-coreutils.override { prefix = ""; })
       #protonvpn-gui
       #ruffle
       #grapejuice
@@ -109,13 +125,14 @@
       #freetube
       #dorion
       #atuin
-      #kdePackages.breeze
+      kdePackages.breeze
       #kdePackages.qt5compat
       #kdePackages.plasma5support
       #steam
       lutris
       protonup-qt
       inkscape
+      protontricks
       wine64Packages.stable
       inconsolata-nerdfont
       #wezterm
@@ -139,4 +156,11 @@ home.extraProfileCommands = ''
 systemd.user.startServices = "sd-switch";
 
 # systemd.user.tmpfiles.rules = [ "L /var/lib/mixium/mixium/world/ ---- ./Modules/Home/Core/Games/Minecraft/world/" ];
+
+dconf.settings = {
+  "org/virt-manager/virt-manager/connections" = {
+    autoconnect = ["qemu:///system"];
+    uris = ["qemu:///system"];
+  };
+};
 }

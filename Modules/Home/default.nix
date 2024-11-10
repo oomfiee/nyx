@@ -5,6 +5,7 @@
     ./Desktop
     ./Users
     #./VM
+    #./VM/kvm.nix
     ];
 }
 

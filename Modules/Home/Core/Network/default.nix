@@ -2,7 +2,7 @@
 {
     imports = [
     ./DNS
-    #./Firewall
+    ./Firewall
     ./Wireless/nm.nix
     ];
 

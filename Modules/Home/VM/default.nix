@@ -1,6 +1,5 @@
 { pkgs, config, userSettings, ... }:
 {
-
 virtualisation.virtualbox.host.enable = true;
 users.extraGroups.vboxusers.members = [ userSettings.username ];
 virtualisation.virtualbox.guest.enable = true;

@@ -3,5 +3,8 @@
 # enable thunderbird
 programs.thunderbird = {
     enable = true;
+    profiles.nyx = {
+        isDefault = true;
+    };
 };
 }
