@@ -92,7 +92,7 @@
       #qpwgraph
       keepassxc
       nheko
-      #kdePackages.neochat
+      kdePackages.neochat
       #thunderbird
       prismlauncher
       yt-dlp
@@ -117,7 +117,7 @@
       #doomrunner
       fastfetch
       starship
-      #sbctl
+      sbctl
       #niv
       #yaml-language-server
       #nil

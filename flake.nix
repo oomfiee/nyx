@@ -11,7 +11,10 @@ inputs = {
   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
   # Secureboot for nixos (EXPERMENTAL)
-#   lanzaboote.url = "github:nix-community/lanzaboote";
+  lanzaboote = {
+    url = "github:nix-community/lanzaboote";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   # Home Manager (BASED)
   home-manager = {
@@ -90,7 +93,7 @@ inputs = {
 #   };
 
 
-outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, nixos-cosmic, umu, ... } @ inputs:
+outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, nixos-cosmic, umu, lanzaboote, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch
@@ -160,7 +163,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         ./Modules/NixOS
         ./Modules/Home
         ./Modules/NixOS/Hardware/GPU/nvidia.nix
-        #lanzaboote.nixosModules.lanzaboote
+        lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
         #stylix.nixosModules.stylix
         lix-module.nixosModules.default
