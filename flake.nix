@@ -83,14 +83,15 @@ inputs = {
     };
 };
 
-#   nixConfig = {
-#     extra-substituters = [
-#       "domain"
-#     ];
-#     extra-trusted-public-keys = [
-#       "randomash:212"
-#     ];
-#   };
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://cache.nixos.org/"
+      ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
 
 outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, nixos-cosmic, umu, lanzaboote, ... } @ inputs:

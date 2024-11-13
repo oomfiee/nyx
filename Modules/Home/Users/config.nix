@@ -11,17 +11,21 @@
 time.timeZone = systemSettings.timezone;
 
 # Note this is still broken please check if it is fixed
-# services.localtimed.enable = true;
-# services.automatic-timezoned.enable = true;
-# location.provider = "geoclue2";
-# services.geoclue2.geoProviderUrl = "https://beacondb.net/v1/geolocate";
-i18n.defaultLocale = systemSettings.locale;
+#   services = {
+#     localtimed.enable = true;
+#     automatic-timezoned.enable = true;
+#     geoclue2.geoProviderUrl = "https://beacondb.net/v2/geolocate";
+#   };
+
+#   location.provider = "geoclue2";
+
+  i18n.defaultLocale = systemSettings.locale;
   
-system.stateVersion = "24.11"; # Did you read the comment? - no i did not
+  system.stateVersion = "24.11"; # Did you read the comment? - no i did not
 
-users.users.root.hashedPassword = "!";
-users.users.root.shell = pkgs.shadow; # Disable root login
+  users.users.root.hashedPassword = "!";
+  users.users.root.shell = pkgs.shadow; # Disable root login
 
-services.homed.enable = true;
-services.nscd.enable = true;
+  services.homed.enable = true;
+  services.nscd.enable = true;
 }

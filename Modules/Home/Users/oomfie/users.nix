@@ -7,4 +7,6 @@
     extraGroups = [ "networkmanager" "wheel" "scanner" "lp" "audio" "docker" ];
     shell = pkgs.${userSettings.sh};
    };
+
+   programs.fish.enable = true;
 }

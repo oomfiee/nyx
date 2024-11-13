@@ -5,7 +5,5 @@
     #./nushell.nix
     ./ssh.nix
     ];
-
-   programs.fish.enable = true;
 }
 

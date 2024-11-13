@@ -131,11 +131,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1731384210,
-        "narHash": "sha256-tx0rDWEeNIJ+UIAb+4glyknpJai7HU54f8ucUr0GD9E=",
+        "lastModified": 1731470588,
+        "narHash": "sha256-radsH6TieMS9S2+NQgWOV+Md6/Kz7lD+Q1GEmIxvjCY=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "33cbf67f367cf0a1f5c5ecab5877e32cb5796681",
+        "rev": "6cfc4ff20b755e675848c0417da3017a92a206e1",
         "type": "gitlab"
       },
       "original": {
@@ -1127,11 +1127,11 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1730836236,
-        "narHash": "sha256-8jrg1DQrgYVaO4hpPRxRTAVluo8cE1Lcuvyv2EXuXpA=",
+        "lastModified": 1731482559,
+        "narHash": "sha256-anoaUsHmI9b8xRYPzv8XyGLTfiyErtZz2Grrl+37dMQ=",
         "ref": "refs/heads/main",
-        "rev": "90352466d502c40e147cfd11a428dde6c2899ab3",
-        "revCount": 833,
+        "rev": "223cd9e2a5f62a9eede6ab6695b2e522fcf78301",
+        "revCount": 835,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/"
