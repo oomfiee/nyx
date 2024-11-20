@@ -23,9 +23,6 @@ services = {
      "[General]
       type=image
       background=${../../Themes/background.png}
-      [Theme]
-      type=image
-      FacesDir=${../../Themes/oomfie.face.icon}
      ")
     ];
 
