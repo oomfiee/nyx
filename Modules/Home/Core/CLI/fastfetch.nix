@@ -6,7 +6,7 @@ xdg.configFile."${config.xdg.configHome}/fastfetch/config.jsonc".text = with pkg
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
         "type": "iterm",
-        "source": "/home/oomfie/nyx/.github/logo.png",
+        "source": "${config.home.homeDirectory}/nyx/.github/logo.png",
     },
     "display": {
         "separator": ":",

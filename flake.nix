@@ -49,7 +49,7 @@ inputs = {
   #};
 
   # Someone is going to kill me for making HM manage Flatpak packages
-  #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+  nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
 
   nixos-generators = {
     url = "github:nix-community/nixos-generators";
@@ -87,14 +87,16 @@ inputs = {
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.nixos.org/"
+      "https://cosmic.cachix.org/"
       ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
 
 
-outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, nixos-cosmic, umu, lanzaboote, ... } @ inputs:
+outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, stylix, nixos-generators, lix-module, nix-minecraft, nixos-cosmic, umu, lanzaboote, nix-flatpak, ... } @ inputs:
   let
 
     system = "x86_64-linux"; # system arch
@@ -166,8 +168,9 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         ./Modules/NixOS/Hardware/GPU/nvidia.nix
         lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
+        nix-flatpak.nixosModules.nix-flatpak
         #stylix.nixosModules.stylix
-        lix-module.nixosModules.default
+        #lix-module.nixosModules.default
         {
           home-manager = {
           useGlobalPkgs = true;

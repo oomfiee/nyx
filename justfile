@@ -23,6 +23,9 @@ gc:
 	# garbage collect all unused nix store entries
 	sudo nix store gc --debug
 
+	# garbage collect all things
+	sudo nix-collect-garbage -d
+
 
 df:
 	nixos-rebuild switch --flake . --use-remote-sudo --option eval-cache false

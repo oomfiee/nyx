@@ -22,7 +22,10 @@ services = {
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user"
      "[General]
       type=image
-      background=${/home/oomfie/nyx/Modules/Home/Themes/background.png}
+      background=${../../Themes/background.png}
+      [Theme]
+      type=image
+      FacesDir=${../../Themes/oomfie.face.icon}
      ")
     ];
 

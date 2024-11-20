@@ -1,8 +1,8 @@
-{ pkgs, modulesPath, lib, config, ... }:
+{ pkgs, modulesPath, lib, config, inputs, ... }:
 
 {
   imports = [
-    "${modulesPath}/installer/cd-dvd/installation-cd-graphical-base.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -41,7 +41,7 @@
 #     };
 
  services.desktopManager.cosmic.enable = true;
- services.displayManager.cosmic-greeter.enable = true;
+ services.displayManager.cosmic-greeter.enable = false;
 
 
   boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages;

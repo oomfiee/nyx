@@ -52,7 +52,7 @@
     #MOZ_ENABLE_WAYLAND = "0";
     BROWSER = lib.mkForce "firefox";
   };
-    stateVersion = "24.05";                                 # Specificify release version
+    stateVersion = "24.11";                                 # Specificify release version
     username = userSettings.username;                       # FIXME: Change 'USERNAME/oomfie' to your username
     homeDirectory = "/home/"+userSettings.username;         # FIXME: Change 'USERNAME/oomfie' to your username
     packages = with pkgs;                                   # List all of your packages here
@@ -102,8 +102,12 @@
       fzf
       #gamescope
       #stremio
-      #armcord
-      legcord
+      #kdePackages.konversation
+      (discord.override {
+       withVencord = true;
+       withOpenASAR = false;
+      })
+      #legcord
       #arrpc
       zola
       #libsForQt5.lightly
