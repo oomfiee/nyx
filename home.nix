@@ -103,11 +103,11 @@
       #gamescope
       #stremio
       #kdePackages.konversation
-      (discord.override {
-       withVencord = true;
-       withOpenASAR = false;
-      })
-      #legcord
+      #(discord.override {
+      # withVencord = true;
+      # withOpenASAR = false;
+      #})
+      legcord
       #arrpc
       zola
       #libsForQt5.lightly
@@ -136,7 +136,7 @@
       lutris
       protonup-qt
       inkscape
-      protontricks
+      #protontricks
       wine64Packages.stable
       inconsolata-nerdfont
       #wezterm
@@ -159,12 +159,10 @@ home.extraProfileCommands = ''
 
 systemd.user.startServices = "sd-switch";
 
-# systemd.user.tmpfiles.rules = [ "L /var/lib/mixium/mixium/world/ ---- ./Modules/Home/Core/Games/Minecraft/world/" ];
-
-dconf.settings = {
-  "org/virt-manager/virt-manager/connections" = {
-    autoconnect = ["qemu:///system"];
-    uris = ["qemu:///system"];
-  };
-};
+# dconf.settings = {
+#   "org/virt-manager/virt-manager/connections" = {
+#     autoconnect = ["qemu:///system"];
+#     uris = ["qemu:///system"];
+#   };
+# };
 }

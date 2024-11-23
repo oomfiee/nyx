@@ -1,5 +1,5 @@
 {
-description = "Overly engineered for some reason.";
+description = "Overly engineered";
 
 inputs = {
 
@@ -169,6 +169,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
         nix-flatpak.nixosModules.nix-flatpak
+        nixos-cosmic.nixosModules.default
         #stylix.nixosModules.stylix
         #lix-module.nixosModules.default
         {

@@ -38,13 +38,14 @@ in {
        qemu = {
          package = pkgs.qemu_kvm;
          ovmf.enable = true;
-         verbatimConfig = ''
-            namespaces = []
-           user = "+${builtins.toString config.users.users.${user}.uid}"
-         '';
+#          verbatimConfig = ''
+#             namespaces = []
+#            user = "+${builtins.toString config.users.users.${user}.uid}"
+#          '';
        };
     };
   };
 
   users.users.${userSettings.username}.extraGroups = [ "qemu-libvirtd" "libvirtd" "disk" ];
+  virtualisation.xen.enable = true;
 }

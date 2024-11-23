@@ -41,7 +41,7 @@
 #     };
 
  services.desktopManager.cosmic.enable = true;
- services.displayManager.cosmic-greeter.enable = false;
+ services.displayManager.cosmic-greeter.enable = true;
 
 
   boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages;
@@ -49,8 +49,13 @@
   boot.supportedFilesystems.zfs = lib.mkForce false;
 
   services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia.open = true;
-  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
+  hardware.nvidia = {
+    open = true;
+    # Modesetting is required.
+    modesetting.enable = true;
+  };
+
+  boot.kernelParams = [ "nvidia_drm.fbdev=1" "nvidia-drm.modeset=1" ];
 
   networking.networkmanager.enable = true;
   networking.wireless.enable = false;
