@@ -8,7 +8,7 @@
   ( ./. + "/Modules/Home/" + "/Core/Video"+("/"+userSettings.video))
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.prompt)+".nix")
   ( ./. + "/Modules/Home/" + "/Core/Shell"+("/"+userSettings.sh)+".nix")
-  #( ./. + "/Modules/Home/" + "/Core/Term"+("/"+userSettings.term)+".nix") # Broken on Nvidia GPUs
+  ( ./. + "/Modules/Home/" + "/Core/Term"+("/"+userSettings.term)+".nix") # Broken on Nvidia GPUs
   ( ./. + "/Modules/Home/Core/Network/Email"+("/"+userSettings.email)+".nix")
   ./Modules/Home/Core/CLI/git.nix
   ./Modules/Home/Core/CLI/fastfetch.nix
@@ -35,6 +35,16 @@
     stateHome = "${config.home.homeDirectory}/.local/state";
     portal.extraPortals = with pkgs; [ xdg-desktop-portal-kde ];
     portal.config.common.default = "kde";
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/about" = "firefox.desktop";
+        "x-scheme-handler/unknown" = "firefox.desktop";
+      };
+    };
     userDirs = {
       enable      = true;
       createDirectories = true;
@@ -50,7 +60,6 @@
   home = {
     sessionVariables = {
     #MOZ_ENABLE_WAYLAND = "0";
-    BROWSER = lib.mkForce "firefox";
   };
     stateVersion = "24.11";                                 # Specificify release version
     username = userSettings.username;                       # FIXME: Change 'USERNAME/oomfie' to your username
@@ -58,8 +67,9 @@
     packages = with pkgs;                                   # List all of your packages here
     [
       onlyoffice-bin
-      simplex-chat-desktop
-      sshfs
+      #simplex-chat-desktop
+      #sshfs
+      #filezilla
       ripgrep
       ani-cli
       distrobox
@@ -74,7 +84,6 @@
       kdePackages.kdeconnect-kde
       (inputs.umu.packages.${pkgs.system}.umu.override {version = "${inputs.umu.shortRev}";})
       inputs.lobster.packages.x86_64-linux.lobster
-      tailscale
       kdePackages.kate
       android-tools
       wget
@@ -92,9 +101,20 @@
       #qpwgraph
       keepassxc
       nheko
-      kdePackages.neochat
+      #kdePackages.neochat
       #thunderbird
-      prismlauncher
+      (prismlauncher.override {
+        #additionalPrograms = [
+        #  glfw
+        #];
+
+        jdks = [
+          graalvm-ce
+          zulu8
+          zulu17
+          zulu
+        ];
+      })
       yt-dlp
       wl-clipboard
       #vscodium
@@ -103,16 +123,18 @@
       #gamescope
       #stremio
       #kdePackages.konversation
+      heroic
+      #minigalaxy
       #(discord.override {
-      # withVencord = true;
-      # withOpenASAR = false;
+      #withVencord = true;
+      #withOpenASAR = false;
       #})
       legcord
       #arrpc
       zola
       #libsForQt5.lightly
       #gparted
-      #tor-browser-bundle-bin
+      tor-browser-bundle-bin
       (pkgs.uutils-coreutils.override { prefix = ""; })
       #protonvpn-gui
       #ruffle
@@ -137,8 +159,9 @@
       protonup-qt
       inkscape
       #protontricks
-      wine64Packages.stable
-      inconsolata-nerdfont
+      #wine64Packages.stable
+      wineWowPackages.waylandFull
+      nerd-fonts.symbols-only
       #wezterm
     ];
 };
@@ -151,11 +174,11 @@ home.file."${config.xdg.cacheHome}/flatpak/override/global".text = ''
 
 fonts.fontconfig.enable = true;
 
-home.extraProfileCommands = ''
-  if [[ -d "$out/share/applications" ]] ; then
-    ${pkgs.desktop-file-utils}/bin/update-desktop-database $out/share/applications
-  fi
-'';
+# home.extraProfileCommands = ''
+#   if [[ -d "$out/share/applications" ]] ; then
+#     ${pkgs.desktop-file-utils}/bin/update-desktop-database $out/share/applications
+#   fi
+# '';
 
 systemd.user.startServices = "sd-switch";
 

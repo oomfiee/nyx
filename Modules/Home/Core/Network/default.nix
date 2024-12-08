@@ -4,7 +4,6 @@
     ./DNS
     ./Firewall
     ./Wireless/nm.nix
+    ./VPN
     ];
-
-    services.tailscale.enable = true;
 }

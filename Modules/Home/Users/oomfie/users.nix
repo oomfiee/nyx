@@ -8,5 +8,5 @@
     shell = pkgs.${userSettings.sh};
    };
 
-   programs.fish.enable = true;
+   #programs.fish.enable = true;
 }

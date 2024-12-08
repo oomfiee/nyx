@@ -23,4 +23,6 @@
  };
 
   systemd.services.autofs.path = [ pkgs.sshfs ];
+
+  environment.systemPackages = [ pkgs.sshfs ];
 }

@@ -7,7 +7,7 @@ inputs = {
   nixpkgs.follows = "nixpkgs-unstable";
 
   # Nix packages
-  nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+  nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
   # Secureboot for nixos (EXPERMENTAL)
@@ -87,11 +87,9 @@ inputs = {
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://cache.nixos.org/"
-      "https://cosmic.cachix.org/"
       ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
 
@@ -127,7 +125,7 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
       de = "KDE";
       video = "mpv";
       prompt = "starship";
-      sh = "fish";
+      sh = "nushell";
       term = "wezterm";
       font = "Jetbrains Mono";
       fontpkg = pkgs.jetbrains-mono;
@@ -169,7 +167,6 @@ outputs = { self, nixpkgs, nixpkgs-stable, home-manager, arkenfox, lobster, styl
         lanzaboote.nixosModules.lanzaboote
         home-manager.nixosModules.home-manager
         nix-flatpak.nixosModules.nix-flatpak
-        nixos-cosmic.nixosModules.default
         #stylix.nixosModules.stylix
         #lix-module.nixosModules.default
         {

@@ -9,6 +9,8 @@ networking = {
 services.resolved.extraConfig = ''
     DNSOverTLS=yes
  '';
+
+
 #
 #   services.adguardhome = {
 #     enable = true;

@@ -33,7 +33,7 @@ config = {
   cache = "yes";
   cache-on-disk = "yes";
   demuxer-max-back-bytes = "512M";
-  demuxer-max-bytes = "512M";
+  demuxer-max-bytes = "1GB";
   ytdl-raw-options = "ignore-config=,sub-lang=\"en,ar\",write-sub=,write-auto-sub=,force-ipv4=";
   script-opts = "ytdl_hook-ytdl_path=yt-dlp";
   deband = "no";
@@ -81,7 +81,7 @@ scriptOpts = {
  fetch_on_start = "no";
  auto_add = "no";
  };
- smart-copy-paste-2 = {
+ SmartCopyPaste_II = {
   linux_copy = "wl-copy"; #xclip -silent -selection clipboard -in
   linux_paste = "wl-paste"; #xclip -selection clipboard -o
  };
