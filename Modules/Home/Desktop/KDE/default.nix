@@ -3,7 +3,7 @@
 
  # Enable the kde plasma desktop environment & sddm
 services = {
-  xserver.enable = true;
+  xserver.enable = false;
   desktopManager.plasma6.enable = true;
     displayManager.sddm = {
      enable = true;
@@ -26,5 +26,5 @@ services = {
      ")
     ];
 
-    programs.xwayland.enable = true;
+    #programs.xwayland.enable = false;
 }

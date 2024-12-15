@@ -22,13 +22,13 @@
     (createChromiumExtension {
       # ublock origin
       id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
-      sha256 = "sha256:1h7hkch680kp40mrc1121l8rl1qxwplqwbl53ysy5kbp9jn77v1r";
+      sha256 = "sha256:0lj0b5a2vga9x8nr12f9ijv1n0f8zcyzml19bzvw722jb98mic88";
       version = "1.60.0";
     })
     (createChromiumExtension {
       # dark reader
       id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
-      sha256 = "sha256:0169harv9niwsjhi8pn3p063k1yhnlgjspih6gcfa6wxil50djzp";
+      sha256 = "sha256:1lih8zbil1jwbzg7m1lnbx41d9smaqbs472lya7dgh36iwgsnpsr";
       version = "4.9.95";
     })
     (createChromiumExtension {

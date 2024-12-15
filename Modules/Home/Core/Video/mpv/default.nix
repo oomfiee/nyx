@@ -39,8 +39,9 @@ config = {
   deband = "no";
   deband-iterations = 4;
   deband-grain = 48;
+  dither-depth = 8;
 # Set sub-ass-override to "no" as we only need to enable it for specific cases
-  sub-ass-override = "no";
+  sub-ass-override = "force";
   sub-ass-style-overrides = "playresx=1920,playresy=1080,Kerning=yes";
   sub-color = "#FFFFFF";
   sub-border-size = 2.4;

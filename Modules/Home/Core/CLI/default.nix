@@ -2,7 +2,7 @@
 {
 
    imports = [
-    ./flatpak.nix
+    #./flatpak.nix
     ./syncthing.nix
     ./kdeconnect.nix
     #./gpg.nix

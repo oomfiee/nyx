@@ -125,9 +125,9 @@
       #kdePackages.konversation
       heroic
       #minigalaxy
-      #(discord.override {
-      #withVencord = true;
-      #withOpenASAR = false;
+      #(discord-canary.override {
+      #  withVencord = true;
+      #  withOpenASAR = true;
       #})
       legcord
       #arrpc
